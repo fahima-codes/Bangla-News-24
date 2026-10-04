@@ -8,15 +8,20 @@ interface Navs {
   url: string;
   scrapable: boolean;
 }
+
 const NavLinks = async () => {
   const res = await fetch('https://news-api-v2.vercel.app/api/categories');
+
   const data = await res.json();
+
   const navs: Navs[] = data.data;
+
   const filterdNavs = navs.filter(n => n.scrapable);
 
   return (
-    <div className="flex gap-5 justify-center mt-5">
-      <Link href={'/'}> হোম</Link>
+    <div className="flex gap-5 justify-center mt-5 text-black">
+      <Link href="/">হোম</Link>
+
       {filterdNavs.map((n, i) => (
         <Link key={i} href={n.slug}>
           {n.title}
