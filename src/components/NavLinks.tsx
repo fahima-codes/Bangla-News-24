@@ -23,7 +23,7 @@ const NavLinks = async () => {
       <Link href="/">হোম</Link>
 
       {filterdNavs.map((n, i) => (
-        <Link key={i} href={n.slug}>
+        <Link key={i} href={`/category/${n.slug}`}>
           {n.title}
         </Link>
       ))}
