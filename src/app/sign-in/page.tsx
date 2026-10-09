@@ -29,7 +29,7 @@ const SignInPage = () => {
     }
 
     if (error) {
-      toast.error(error.message);
+      toast.error(error.message || 'Login failed, try again');
       console.log(error);
     }
   };

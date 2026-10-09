@@ -37,7 +37,7 @@ const Marquee = async () => {
         </div>
 
         <div className="flex-1 overflow-hidden relative">
-          <div className="flex gap-8 animate-[marquee_40s_linear_infinite] whitespace-nowrap py-1 hover:[animation-play-state:paused]">
+          <div className="flex gap-8 animate-[marquee_12S_linear_infinite] whitespace-nowrap py-1 hover:[animation-play-state:paused]">
             {items.map((h, i) => (
               <Link
                 key={`${h.id || h._id}-${i}`}

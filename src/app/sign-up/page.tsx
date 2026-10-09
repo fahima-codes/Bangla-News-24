@@ -2,13 +2,15 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { authClient } from '@/lib/auth-client';
+import React from 'react';
 
 const SignUpPage = () => {
   const router = useRouter();
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const onSubmit = async e => {
+  // FIX: e er type add kora hoise
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError('');
     setLoading(true);
@@ -17,14 +19,14 @@ const SignUpPage = () => {
     const name = String(formData.get('name'));
     const email = String(formData.get('email'));
     const password = String(formData.get('password'));
-    const image = String(formData.get('image')); // <-- image url
+    const image = String(formData.get('image'));
 
     try {
       const { data, error } = await authClient.signUp.email({
         name,
         email,
         password,
-        image, // <-- ekhane pathacchi, better-auth e image support kore
+        image,
         callbackURL: '/',
       });
 
@@ -79,7 +81,6 @@ const SignUpPage = () => {
             placeholder="apnar@email.com"
           />
 
-          {/* --- IMAGE URL FIELD --- */}
           <label className="label font-medium mt-1">
             ছবির লিংক (Image URL)
           </label>

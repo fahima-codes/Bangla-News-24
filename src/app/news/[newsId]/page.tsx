@@ -47,7 +47,9 @@ const NewsDetails = async ({
 
   const blocks: any[] =
     news.description?.blocks ?? news.content?.model?.blocks ?? [];
-
+  if (!news) {
+    notFound();
+  }
   return (
     <main className="mx-auto max-w-2xl px-4 py-8">
       <Link
